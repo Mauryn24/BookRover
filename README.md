@@ -1,5 +1,3 @@
-Certainly! Below is a sample README file for your "Book Rover" repository, a book library website:
-
 # Book Rover: Online Book Library
 
 ## Project Overview
