@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}" alt="round-circle">
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.username }}</h2>
+            <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <fieldset>
+                    <legend>Account Info</legend>
+                    <div class="form-group">
+                        <!-- label -->
+                        {{ form.username.label(class="form-label") }}
+
+                        {% if form.username.errors %}
+                        {{ form.username }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <!-- input field part -->
+                        {{ form.username(class="form-label-field") }}
+                        {% endif %}
+
+
+                    </div>
+                    <div class="form-group">
+                        <!-- label -->
+                        {{ form.email.label(class="form-label") }}
+
+                        {% if form.email.errors %}
+                        {{ form.email }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <!-- input field part -->
+                            {{ form.email(class="form-label-field") }}
+                        {% endif %}
+
+                    </div>
+                    <div >
+                        {{ form.picture.label() }}
+                        {{ form.picture(class="form-control-file") }}
+                        {% if form.picture.errors %}
+                            {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+
+{% endblock content %}

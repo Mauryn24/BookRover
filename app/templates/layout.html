@@ -10,6 +10,26 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="{{ url_for('home' )}}">Home</a></li>
+            </ul>
+
+        </nav>
+
+        <nav class="logout">
+            <!-- if user  is logged in then the route that should be displayed is the logut route  -->
+            {% if current_user. is_authenticated %}
+            <a href="{{ url_for('account') }}">Account</a>
+            <a href="{{ url_for('logout') }}">logout</a>
+            {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}"> SignUp</a>
+            {% endif %}
+        </nav>
+
+    </header>
     <div class="container mt-4">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
